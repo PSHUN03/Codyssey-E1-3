@@ -19,6 +19,7 @@ from pathlib import Path
 # 설정값
 # ----------------------------------------------------------------------
 EPSILON = 1e-9           # 두 점수 차이가 이보다 작으면 동점으로 본다.
+EPSILON_TEXT = "1e-9"    # 화면 표기용 (f-string으로 찍으면 1e-09로 표시된다)
 REPEAT_COUNT = 10        # 성능 측정 반복 횟수
 MODE1_SIZE = 3           # 모드 1(사용자 입력) 행렬 크기
 BENCHMARK_SIZES = (3, 5, 13, 25)
@@ -315,7 +316,7 @@ def run_user_input_mode():
     print(f"B 점수: {score_b!r}")
     print(f"연산 시간(평균/{REPEAT_COUNT}회, MAC 1회 기준): {avg_ms:.4f} ms")
     if decision is None:
-        print(f"판정: 판정 불가 (|A-B| < {EPSILON})")
+        print(f"판정: 판정 불가 (|A-B| < {EPSILON_TEXT})")
     else:
         print(f"판정: {decision}")
 
@@ -432,7 +433,7 @@ def evaluate_case(key, case, filters, filter_errors):
     if decision is None:
         result["reason"] = (
             f"동점(UNDECIDED) 규칙 적용 - "
-            f"|Cross-X| = {abs(cross_score - x_score):.3g} < {EPSILON}"
+            f"|Cross-X| = {abs(cross_score - x_score):.3g} < {EPSILON_TEXT}"
         )
     elif decision != expected:
         result["reason"] = f"판정 {decision} ≠ expected {expected}"
