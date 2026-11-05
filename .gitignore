@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 과제 안내 자료 (코디세이 배포 자료라 저장소에 포함하지 않음)
+*.pdf
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
